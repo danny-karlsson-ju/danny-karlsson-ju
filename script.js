@@ -43,6 +43,7 @@ async function fetchCV() {
 		createCV(cvData);
 	} catch (error) {
 		console.log(error);
+		// TODO - Show error messages in UI too... Another day
 	}
 }
 
@@ -64,7 +65,6 @@ function createCV(cvData) {
 	});
 
 	const profileFooter = document.querySelector(".profileFooter");
-	console.log(cvData.profileFooter);
 
 	cvData.profileFooter.forEach((item) => {
 		const p = document.createElement("p");
@@ -91,17 +91,5 @@ function createCV(cvData) {
 			const textNode = document.createTextNode(item.text);
 			p.appendChild(textNode);
 		}
-
-		// item.fontawesome.forEach((icon) => {
-		// 	const i = document.createElement("i");
-		// 	i.className = icon;
-		// 	p.appendChild(i);
-		// });
-		// 		{
-		// 	"fontawesome": "fa-solid fa-code",
-		// 	"strong": "Denna sidan är skapad med hjälp av ",
-		// 	"href-link": "https://bulma.io",
-		// 	"href-text": "Bulma"
-		// }
 	});
 }
