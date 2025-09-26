@@ -1,0 +1,29 @@
+{
+	"profilePicture": "photo.jpg",
+	"profileName": "Danny Karlsson",
+	"profileDescription": "Jag är intresserad av spelutveckling och webbutveckling.",
+	"profileExperience": [
+		"Tidsam, Värnamo – Expeditör (2022–2025)",
+		"Gunnarssons gård, Torekov och Båstad – Potatisplockare (2016–2020)"
+	],
+	"profileFooter": [
+		{
+			"fontawesome": "fa-brands fa-github",
+			"strong": " GitHub ",
+			"href-link": "https://github.com/danny-karlsson-ju",
+			"href-text": "danny-karlsson-ju"
+		},
+		{
+			"fontawesome": "fa-brands fa-discord",
+			"strong": " Discord ",
+			"href-link": "https://discord.com/users/278543574955113216",
+			"href-text": "tails"
+		},
+		{
+			"fontawesome": "fa-solid fa-code",
+			"strong": " Styled with ",
+			"href-link": "https://bulma.io",
+			"href-text": "Bulma"
+		}
+	]
+}
