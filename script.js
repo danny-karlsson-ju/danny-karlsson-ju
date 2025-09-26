@@ -26,8 +26,82 @@ function createRepos(repoData) {
 		repoBtn.textContent = repo.name;
 		repoBtn.href = repo.html_url;
 		repoBtn.target = "_blank";
-		console.log(repo.html_url);
 
 		repos.appendChild(repoBtn);
+	});
+}
+
+fetchCV();
+
+async function fetchCV() {
+	try {
+		const response = await fetch("cv.json");
+		if (!response.ok) {
+			throw new Error("Failed to fetch CV");
+		}
+		const cvData = await response.json();
+		createCV(cvData);
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function createCV(cvData) {
+	const profilePicture = document.querySelector(".profilePicture");
+	profilePicture.src = cvData.profilePicture;
+
+	const profileName = document.querySelector(".profileName");
+	profileName.textContent = cvData.profileName;
+
+	const profileDescription = document.querySelector(".profileDescription");
+	profileDescription.textContent = cvData.profileDescription;
+
+	const profileExperience = document.querySelector(".profileExperience");
+	cvData.profileExperience.forEach((item) => {
+		const p = document.createElement("p");
+		p.textContent = item;
+		profileExperience.appendChild(p);
+	});
+
+	const profileFooter = document.querySelector(".profileFooter");
+	console.log(cvData.profileFooter);
+
+	cvData.profileFooter.forEach((item) => {
+		const p = document.createElement("p");
+		profileFooter.appendChild(p);
+
+		if (item.fontawesome) {
+			const i = document.createElement("i");
+			i.className = item.fontawesome;
+			p.appendChild(i);
+		}
+		if (item.strong) {
+			const strong = document.createElement("strong");
+			strong.textContent = item.strong;
+			p.appendChild(strong);
+		}
+		if (item["href-link"] && item["href-text"]) {
+			const a = document.createElement("a");
+			a.href = item["href-link"];
+			a.target = "_blank";
+			a.textContent = item["href-text"];
+			p.appendChild(a);
+		}
+		if (item.text) {
+			const textNode = document.createTextNode(item.text);
+			p.appendChild(textNode);
+		}
+
+		// item.fontawesome.forEach((icon) => {
+		// 	const i = document.createElement("i");
+		// 	i.className = icon;
+		// 	p.appendChild(i);
+		// });
+		// 		{
+		// 	"fontawesome": "fa-solid fa-code",
+		// 	"strong": "Denna sidan är skapad med hjälp av ",
+		// 	"href-link": "https://bulma.io",
+		// 	"href-text": "Bulma"
+		// }
 	});
 }
